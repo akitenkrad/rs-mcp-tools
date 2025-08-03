@@ -1,0 +1,17 @@
+[package]
+name = "mcp-agent"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+version.workspace = true
+
+[dependencies]
+mcp-client.workspace = true
+openai-tools.workspace = true
+serde_json.workspace = true
+fxhash.workspace = true
+tracing.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+dotenvy.workspace = true
+test-log.workspace = true

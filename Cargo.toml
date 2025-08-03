@@ -1,16 +1,18 @@
 [package]
 edition.workspace = true
 license.workspace = true
-name = "app"
+name = "mcp-tools"
 publish.workspace = true
 version.workspace = true
 
-[[bin]]
-name = "app"
-path = "src/bin/app.rs"
-
 [workspace]
-members = ["shared"]
+members = [
+    "mcp-agent",
+    "mcp-client",
+    "mcp-servers/fetch",
+    "mcp-servers/sample-calculator",
+    "shared",
+]
 
 [workspace.package]
 edition = "2024"
@@ -19,16 +21,44 @@ publish = false
 version = "0.1.0"
 
 [workspace.dependencies]
+mcp-agent = { path = "mcp-agent" }
+mcp-client = { path = "mcp-client" }
 anyhow = "1.0.98"
+axum = "0.8.4"
 derive-new = "0.7.0"
 fxhash = "0.2.1"
-indicatif = "0.17.11"
+indicatif = "0.18.0"
 serde = { version = "1.0.219", features = ["derive"] }
-serde_json = "1.0.140"
+serde_json = "1.0.142"
 shared = { path = "./shared" }
-strum = { version = "0.27.1", features = ["derive"] }
+strum = { version = "0.27.2", features = ["derive"] }
 tracing = { version = "0.1.41", features = ["log"] }
 tracing-subscriber = { version = "0.3.19", features = ["env-filter", "json"] }
+sample-calculator = { path = "mcp-servers/sample-calculator" }
+openai-tools = { git = "https://github.com/akitenkrad/rs-openai-tools.git", branch = "main" }
+rmcp = { git = "https://github.com/modelcontextprotocol/rust-sdk", branch = "main", features = [
+    "server",
+    "macros",
+    "transport-sse-server",
+    "transport-io",
+    "client",
+    "transport-sse-client",
+    "transport-child-process",
+    "reqwest",
+] }
+rmcp-macros = "0.2.1"
+tokio = { version = "1.47.1", features = [
+    "macros",
+    "rt",
+    "rt-multi-thread",
+    "io-std",
+    "signal",
+] }
+tokio-util = "0.7.15"
+url = "2.5.4"
+dotenvy = "0.15.7"
+test-log = { version = "0.2", features = ["trace"] }
 
 [dependencies]
 tracing.workspace = true
+sample-calculator.workspace = true

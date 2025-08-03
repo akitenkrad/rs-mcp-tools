@@ -10,9 +10,9 @@ pub enum Environment {
 }
 
 pub fn which() -> Environment {
-    #[cfg(debug_assertions)]
+    #[cfg(test)]
     let default_env = Environment::Development;
-    #[cfg(not(debug_assertions))]
+    #[cfg(not(test))]
     let default_env = Environment::Production;
 
     match env::var("ENV") {

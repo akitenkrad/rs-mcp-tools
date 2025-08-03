@@ -1,0 +1,19 @@
+[package]
+name = "sample-calculator"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+version.workspace = true
+
+[[bin]]
+name = "sample-calculator-mcp-server"
+path = "src/main.rs"
+
+[dependencies]
+rmcp.workspace = true
+serde.workspace = true
+tracing.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+axum.workspace = true
